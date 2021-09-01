@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>News List</title>
+    <title>Web Berita - News List</title>
 </head>
 <body>
     <ul>
         @foreach ($news as $new)
-        <li>{{ $new->title }}</li>
+            <li>{{ $new->title }}</li>
         @endforeach
     </ul>
 </body>
