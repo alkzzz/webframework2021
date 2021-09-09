@@ -1,3 +1,3 @@
-@extends('layouts.utama')
+@extends('layouts.frontend')
 
 @section('judul', 'Home')

@@ -5,10 +5,15 @@ use App\Models\News;
 
 class NewsController extends Controller
 {
-    public function index()
+    public function frontend_index()
     {
         $news = News::all();
-        $nama = 'Muhamamad Alkaff';
-        return view('news.index', compact('news', 'nama'));
+        return view('news.frontend_index', compact('news'));
+    }
+
+    public function backend_index()
+    {
+        $news = News::all();
+        return view('news.backend_index', compact('news'));
     }
 }

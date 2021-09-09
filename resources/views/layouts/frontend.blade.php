@@ -6,11 +6,15 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.87.0">
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('/favicon.ico') }}" type="image/x-icon">
+
     <title>Web Berita - @yield('judul')</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/carousel/">
     <!-- Bootstrap core CSS -->
-    <link href="{{ asset('/css/bootstrap.min.css') }}" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/united.min.css') }}">
 
     <style>
@@ -77,7 +81,7 @@
 
         <div class="container">
           <div class="carousel-caption text-start">
-            <h1>Headline nya saya ubah.</h1>
+            <h1>{{ asset('/') }}</h1>
             <p>Some representative placeholder content for the first slide of the carousel.</p>
             <p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>
           </div>
@@ -206,7 +210,7 @@
 
 {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script> --}}
 
-<script src="{{ asset('/js/bootstrap.bundle.min.js') }}" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script> --}}
+<script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
 
 
   </body>
