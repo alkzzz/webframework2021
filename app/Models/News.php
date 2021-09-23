@@ -9,4 +9,10 @@ class News extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'slug',
+        'title',
+        'content'
+    ];
+
 }

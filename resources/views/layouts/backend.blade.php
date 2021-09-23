@@ -9,7 +9,7 @@
     <title>Dashboard Web Berita - @yield('title')</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 
     <!-- Bootstrap core CSS -->
@@ -63,32 +63,26 @@
         <ul class="nav flex-column">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="{{ route('dashboard') }}">
-              <span data-feather="home"></span>
-              Dashboard
+                <i class="fas fa-fw fa-tachometer-alt"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('backend_news_index') }}">
-              <span data-feather="layers"></span>
-              News
+                <i class="fas fa-fw fa-newspaper"></i> News
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <span data-feather="shopping-cart"></span>
-              Categories
+            <i class="fas fa-fw fa-indent"></i> Categories</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-tags"></i> Tags
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
-              <span data-feather="users"></span>
-              Tags
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              Users Management
+                <i class="fas fa-fw fa-users"></i> Users Management
             </a>
           </li>
         </ul>
@@ -102,7 +96,6 @@
 
 
     <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('/js/feather.min.js') }}"></script>
     <script src="{{ asset('/js/Chart.min.js') }}"></script>
     <script src="{{ asset('/js/dashboard.js') }}"></script>
   </body>

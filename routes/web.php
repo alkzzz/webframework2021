@@ -28,3 +28,10 @@ Route::get('/dashboard', function() {
 })->name('dashboard');
 
 Route::get('/dashboard/news', [NewsController::class, 'backend_index'])->name('backend_news_index');
+
+Route::get('/dashboard/news/add', [NewsController::class, 'add'])->name('add_news');
+Route::post('/dashboard/news/store', [NewsController::class, 'store'])->name('store_news');
+
+#Edit dan Update
+
+#Delete
