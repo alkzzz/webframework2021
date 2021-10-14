@@ -33,5 +33,8 @@ Route::get('/dashboard/news/add', [NewsController::class, 'add'])->name('add_new
 Route::post('/dashboard/news/store', [NewsController::class, 'store'])->name('store_news');
 
 #Edit dan Update
+Route::get('/dashboard/news/edit/{id}', [NewsController::class, 'edit'])->name('edit_news');
+Route::patch('/dashboard/news/update/{id}', [NewsController::class, 'update'])->name('update_news');
 
 #Delete
+Route::delete('/dashboard/news/delete/{id}', [NewsController::class, 'delete'])->name('delete_news');

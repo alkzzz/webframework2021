@@ -15,6 +15,7 @@ class NewsController extends Controller
     public function backend_index()
     {
         $news = News::all();
+        //ddd($news);
         return view('news.backend_index', compact('news'));
     }
 
@@ -31,4 +32,29 @@ class NewsController extends Controller
 
         return redirect()->route('backend_news_index');
     }
+
+    public function edit($id) {
+        $new = News::where('id', '=', $id)->first();
+        return view('news.edit', compact('new'));
+    }
+
+    public function update(Request $request, $id) {
+        $new = News::where('id', '=', $id)->first();
+
+        $new->update([
+            'slug' => \Str::slug($request->title),
+            'title' => $request->input('title'),
+            'content' => $request->input('content')
+        ]);
+
+        return redirect()->route('backend_news_index');
+    }
+
+    public function delete($id) {
+        $new = News::where('id', '=', $id)->first();
+        $new->delete();
+
+        return redirect()->route('backend_news_index');
+    }
+
 }

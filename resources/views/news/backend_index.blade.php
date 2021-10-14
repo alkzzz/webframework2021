@@ -30,8 +30,12 @@
             <td>{{ $new->title }}</td>
             <td>{{ $new->content }}</td>
             <td>
-                <a type="button" class="btn btn-warning" href="#">Edit</a>
-                <a type="button" class="btn btn-danger" href="#">Delete</a>
+                <a type="button" class="btn btn-warning mb-1" href="{{ route('edit_news', $new->id) }}">Edit</a>
+                <form action="{{ route('delete_news', $new->id) }}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <input type="submit" class="btn btn-danger" onclick="return confirm('Yakin Hapus?')" value="Delete">
+                </form>
             </td>
         </tr>
         @endforeach
