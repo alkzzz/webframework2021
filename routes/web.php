@@ -15,9 +15,7 @@ use App\Http\Controllers\NewsController;
 */
 
 # FrontEnd
-Route::get('/', function () {
-    return view('index');
-})->name('homepage');
+Route::get('/', [NewsController::class, 'homepage'])->name('homepage');
 
 # BREAD NEWS (Browse, Read, Edit, Add, Delete)
 Route::get('/news', [NewsController::class, 'frontend_index'])->name('frontend_news_index');

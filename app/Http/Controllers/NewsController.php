@@ -6,6 +6,11 @@ use App\Models\News;
 
 class NewsController extends Controller
 {
+    public function homepage() {
+        $news = News::latest()->take(3)->get();
+        return view('homepage', compact('news'));
+    }
+
     public function frontend_index()
     {
         $news = News::all();

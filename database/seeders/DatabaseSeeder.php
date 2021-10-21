@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use DB;
 use Illuminate\Support\Facades\Schema;
+use Faker\Factory as Faker;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,14 +16,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Faker::create();
+
         // \App\Models\User::factory(10)->create();
         DB::table('news')->truncate();
 
-        for ($i=1; $i <= 5; $i++) {
+        for ($i=1; $i <= 100; $i++) {
             DB::table('news')->insert([
-                'slug' => 'ini-berita-ke-'.$i,
-                'title' => 'Ini berita ke-'.$i,
-                'content' => 'Ini adalah isi berita dari berita ke-'.$i
+                'slug' => $faker->slug,
+                'title' => ucwords($faker->sentence),
+                'content' => $faker->paragraph(5),
+                'created_at' => $faker->dateTimeThisMonth(),
+                'updated_at' => $faker->dateTimeThisMonth(),
             ]);
         }
     }

@@ -85,6 +85,11 @@
                 <i class="fas fa-fw fa-users"></i> Users Management
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('homepage') }}">
+                <i class="fas fa-fw fa-arrow-left"></i> Back to Homepage
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
