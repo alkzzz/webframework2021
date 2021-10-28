@@ -49,7 +49,7 @@
 
         @foreach ($news as $new)
         <div class="col-lg-4">
-            <img src="{{ $new->image }}" alt="{{ $new->image }}" width="140" height="140">
+            <img src="{{ asset('storage/' . $new->image) }}" alt="{{ asset('storage/' . $new->image) }}" width="140" height="140">
             <h2>{{ $new->title }}</h2>
             <p>{{ $new->content }} </p>
             <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
@@ -70,7 +70,7 @@
         </div>
         <div class="col-md-5">
           {{-- <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> --}}
-          <img src="{{ Storage::url($new->image) }}" alt="{{ $new->image }}" width="500" height="500">
+          <img src="{{ asset('storage/' . $new->image) }}" alt="{{ asset('storage/' . $new->image) }}" width="500" height="500">
         </div>
       </div>
       @endforeach
