@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
                 'slug' => $faker->slug,
                 'title' => ucwords($faker->sentence),
                 'content' => $faker->paragraph(5),
+                'image' => $faker->imageUrl(),
                 'created_at' => $faker->dateTimeThisMonth(),
                 'updated_at' => $faker->dateTimeThisMonth(),
             ]);

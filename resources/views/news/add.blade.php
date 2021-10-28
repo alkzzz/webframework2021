@@ -10,17 +10,30 @@
 
     <h2>Add News Form</h2>
     <hr>
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
-    <form method="POST" action={{ route('store_news') }}>
+    <form method="POST" enctype="multipart/form-data" action={{ route('store_news') }}>
         @csrf
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" name="title">
+            <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">Content</label>
-            <textarea class="form-control" id="content" rows="10" name="content"></textarea>
+            <textarea class="form-control" id="content" rows="10" name="content">{{ old('content') }}</textarea>
           </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">Image</label>
+            <input type="file" name="image">
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 

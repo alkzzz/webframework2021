@@ -20,7 +20,6 @@ class NewsController extends Controller
     public function backend_index()
     {
         $news = News::all();
-        //ddd($news);
         return view('news.backend_index', compact('news'));
     }
 
@@ -29,11 +28,22 @@ class NewsController extends Controller
     }
 
     public function store(Request $request) {
-        News::create([
-            'slug' => \Str::slug($request->title),
-            'title' => $request->input('title'),
-            'content' => $request->input('content')
+        $validated = $request->validate([
+            'title' => 'required',
+            'content' => 'required',
+            'image' => 'required'
         ]);
+
+        $path = $request->image->store('images');
+
+        if($validated) {
+            News::create([
+                'slug' => \Str::slug($request->title),
+                'title' => $request->input('title'),
+                'content' => $request->input('content'),
+                'image' => $path
+            ]);
+        }
 
         return redirect()->route('backend_news_index');
     }
