@@ -21,18 +21,33 @@ Route::get('/', [NewsController::class, 'homepage'])->name('homepage');
 Route::get('/news', [NewsController::class, 'frontend_index'])->name('frontend_news_index');
 
 # BackEnd
-Route::get('/dashboard', function() {
-    return view('dashboard');
-})->name('dashboard');
 
-Route::get('/dashboard/news', [NewsController::class, 'backend_index'])->name('backend_news_index');
+Route::group(['prefix' =>'dashboard', 'middleware' => 'auth'], function() {
 
-Route::get('/dashboard/news/add', [NewsController::class, 'add'])->name('add_news');
-Route::post('/dashboard/news/store', [NewsController::class, 'store'])->name('store_news');
+    Route::get('/', function() {
+        return view('dashboard');
+    })->name('dashboard');
 
-#Edit dan Update
-Route::get('/dashboard/news/edit/{id}', [NewsController::class, 'edit'])->name('edit_news');
-Route::patch('/dashboard/news/update/{id}', [NewsController::class, 'update'])->name('update_news');
+    Route::get('/news', [NewsController::class, 'backend_index'])->name('backend_news_index');
 
-#Delete
-Route::delete('/dashboard/news/delete/{id}', [NewsController::class, 'delete'])->name('delete_news');
+    Route::get('/news/add', [NewsController::class, 'add'])->name('add_news');
+    Route::post('/news/store', [NewsController::class, 'store'])->name('store_news');
+
+    #Edit dan Update
+    Route::get('/news/edit/{id}', [NewsController::class, 'edit'])->name('edit_news');
+    Route::patch('/news/update/{id}', [NewsController::class, 'update'])->name('update_news');
+
+    #Delete
+    Route::delete('/news/delete/{id}', [NewsController::class, 'delete'])->name('delete_news');
+});
+
+
+
+Auth::routes(
+    ['register' => false,
+    'reset' => false,
+    'verify' => false,
+    ]
+);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

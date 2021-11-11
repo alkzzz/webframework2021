@@ -10,7 +10,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-
+    @yield('extra_css')
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
@@ -51,7 +51,12 @@
   <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
   <div class="navbar-nav">
     <div class="nav-item text-nowrap">
-      <a class="nav-link px-3" href="#">Sign out</a>
+    <a class="nav-link px-3"
+    href="{{ route('logout') }}"
+    onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign out</a>
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+        @csrf
+    </form>
     </div>
   </div>
 </header>
@@ -102,6 +107,6 @@
 
     <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('/js/Chart.min.js') }}"></script>
-    <script src="{{ asset('/js/dashboard.js') }}"></script>
+    @yield('extra_js')
   </body>
 </html>
