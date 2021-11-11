@@ -41,8 +41,6 @@ Route::group(['prefix' =>'dashboard', 'middleware' => 'auth'], function() {
     Route::delete('/news/delete/{id}', [NewsController::class, 'delete'])->name('delete_news');
 });
 
-
-
 Auth::routes(
     ['register' => false,
     'reset' => false,

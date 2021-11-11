@@ -1,14 +1,28 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\News;
+use App\Models\User;
 
 class NewsController extends Controller
 {
     public function homepage() {
         $news = News::latest()->take(3)->get();
-        return view('homepage', compact('news'));
+
+        // One to one
+        $user = User::find(5);
+        $phone = $user->phone;
+
+        // One to many
+        $international = Category::where('name', 'Internasional')->first();
+        //$international_news = News::where('category_id', $international->id)->get();
+        $international_news = $international->news;
+        dd($international_news);
+
+        return view('homepage', compact('news', 'user', 'phone'));
     }
 
     public function frontend_index()

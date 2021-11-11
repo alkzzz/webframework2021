@@ -16,6 +16,11 @@ class CreateNewsTable extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->id();
 
+            $table->foreignId('category_id')->constrained(); //table nya categories
+            // $table->foreignId('kategori_id')->constrained(); //table nya kategoris
+
+            // $table->unsignedBigInteger('kategori_id');
+            // $table->foreign('kategori_id')->references('id')->on('kategori'); // table kategori
             $table->string('title');
             $table->string('slug');
             $table->text('content');

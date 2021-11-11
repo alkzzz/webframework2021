@@ -4,7 +4,7 @@
 
 @section('content')
 <main>
-
+    <h1>User dengan nama {{ $user->name }} memiliki no telpon {{ $phone->number }}</h1>
     <div id="slideBerita" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-indicators">
         <button type="button" data-bs-target="#slideBerita" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
