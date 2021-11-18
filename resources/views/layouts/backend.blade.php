@@ -77,11 +77,11 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('backend_categories_index') }}">
             <i class="fas fa-fw fa-indent"></i> Categories</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="{{ route('backend_tags_index') }}">
             <i class="fas fa-fw fa-tags"></i> Tags
             </a>
           </li>

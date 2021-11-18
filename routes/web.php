@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TagController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +41,10 @@ Route::group(['prefix' =>'dashboard', 'middleware' => 'auth'], function() {
 
     #Delete
     Route::delete('/news/delete/{id}', [NewsController::class, 'delete'])->name('delete_news');
+
+    Route::get('/categories', [CategoryController::class, 'backend_index'])->name('backend_categories_index');
+
+    Route::get('/tags', [TagController::class, 'backend_index'])->name('backend_tags_index');
 });
 
 Auth::routes(

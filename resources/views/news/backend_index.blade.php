@@ -19,9 +19,8 @@
     <table class="table" id="tabelBerita">
         <thead>
         <tr>
-            <th scope="col">No</th>
-            <th scope="col">Slug</th>
             <th scope="col">Judul</th>
+            <th scope="col">Kategori</th>
             <th scope="col">Isi</th>
             <th scope="col">Aksi</th>
         </tr>
@@ -29,16 +28,15 @@
         <tbody>
         @foreach ($news as $key => $new)
         <tr>
-            <th scope="row">{{ $key+1 }}</th>
-            <td>{{ $new->slug }}</td>
             <td>{{ $new->title }}</td>
-            <td>{{ $new->content }}</td>
+            <td>{{ $new->category->name }}</td>
+            <td>{{ Str::limit($new->content, 50, ' (...)') }}</td>
             <td>
-                <a type="button" class="btn btn-warning mb-1" href="{{ route('edit_news', $new->id) }}">Edit</a>
-                <form action="{{ route('delete_news', $new->id) }}" method="post">
+                <a type="button" class="btn btn-warning" href="{{ route('edit_news', $new->id) }}">Edit</a>
+                <form style="display:inline" action="{{ route('delete_news', $new->id) }}" method="post">
                     @method('DELETE')
                     @csrf
-                    <input type="submit" class="btn btn-danger" onclick="return confirm('Yakin Hapus?')" value="Delete">
+                    <button type="submit" class="btn btn-danger" onclick="return confirm('Yakin Hapus?')">Delete</button>
                 </form>
             </td>
         </tr>

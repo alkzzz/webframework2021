@@ -26,6 +26,7 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->truncate();
         DB::table('phones')->truncate();
         DB::table('news')->truncate();
+        DB::table('categories')->truncate();
 
         DB::table('users')->insert([
             'name' => 'Muhammad Alkaff',
@@ -34,30 +35,40 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make(12345678),
         ]);
 
-        DB::table('categories')->insert([
-            'name' => 'Internasional'
-        ]);
+        $categories = ['Internasional', 'Nasional', 'Politik', 'Ekonomi', 'Olahraga'];
 
-        DB::table('categories')->insert([
-            'name' => 'Nasional'
-        ]);
+        foreach ($categories as $category) {
+            DB::table('categories')->insert([
+                'name' => $category
+            ]);
+        }
 
-        DB::table('categories')->insert([
-            'name' => 'Olahraga'
-        ]);
+        $tags = ['persija', 'barito-putera', 'real-madrid', 'messi', 'ronaldo', 'jokowi'];
+
+        foreach ($tags as $tag) {
+            DB::table('tags')->insert([
+                'name' => $tag,
+            ]);
+        }
 
         for ($i=1; $i <= 100; $i++) {
             DB::table('news')->insert([
-                'category_id' => random_int(1,3),
+                'category_id' => random_int(1,5),
                 'slug' => $faker->slug,
                 'title' => ucwords($faker->sentence),
                 'content' => $faker->paragraph(5),
-                'image' => $faker->imageUrl(),
+                'image' =>  'cat.jpg',
                 'created_at' => $faker->dateTimeThisMonth(),
                 'updated_at' => $faker->dateTimeThisMonth(),
             ]);
         }
 
+        for ($i=1; $i <= 50; $i++) {
+            DB::table('new_tag')->insert([
+                'new_id' => random_int(1,30),
+                'tag_id' => random_int(1,6),
+            ]);
+        }
         for ($i=0; $i < 10; $i++) {
             DB::table('users')->insert([
                 'name' => $faker->name,

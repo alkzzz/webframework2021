@@ -26,6 +26,14 @@
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" id="title" name="title" value="{{ old('title') }}">
         </div>
+        <div class="mb-3 form-group">
+            <label for="kategori">Pilih kategori</label>
+            <select class="form-control" id="kategori" name="category_id">
+                @foreach ($daftar_kategori as $kategori)
+                    <option value="{{ $kategori->id }}">{{ $kategori->name }}</option>
+                @endforeach
+            </select>
+        </div>
         <div class="mb-3">
             <label for="content" class="form-label">Content</label>
             <textarea class="form-control" id="content" rows="10" name="content">{{ old('content') }}</textarea>

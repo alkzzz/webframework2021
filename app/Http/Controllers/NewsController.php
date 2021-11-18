@@ -14,15 +14,14 @@ class NewsController extends Controller
 
         // One to one
         $user = User::find(5);
-        $phone = $user->phone;
 
         // One to many
         $international = Category::where('name', 'Internasional')->first();
-        //$international_news = News::where('category_id', $international->id)->get();
+        // $international_news = News::where('category_id', $international->id)->get();
         $international_news = $international->news;
-        dd($international_news);
+        // dd($international_news);
 
-        return view('homepage', compact('news', 'user', 'phone'));
+        return view('homepage', compact('news', 'user'));
     }
 
     public function frontend_index()
@@ -33,17 +32,19 @@ class NewsController extends Controller
 
     public function backend_index()
     {
-        $news = News::all();
+        $news = News::with('category')->get();
         return view('news.backend_index', compact('news'));
     }
 
     public function add() {
-        return view('news.add');
+        $daftar_kategori = Category::all();
+        return view('news.add', compact('daftar_kategori'));
     }
 
     public function store(Request $request) {
         $validated = $request->validate([
             'title' => 'required',
+            'category_id' => 'required',
             'content' => 'required',
             'image' => 'required'
         ]);
@@ -54,6 +55,7 @@ class NewsController extends Controller
             News::create([
                 'slug' => \Str::slug($request->title),
                 'title' => $request->input('title'),
+                'category_id' => $request->input('category_id'),
                 'content' => $request->input('content'),
                 'image' => $path
             ]);
@@ -64,7 +66,8 @@ class NewsController extends Controller
 
     public function edit($id) {
         $new = News::where('id', '=', $id)->first();
-        return view('news.edit', compact('new'));
+        $daftar_kategori = Category::all();
+        return view('news.edit', compact('new', 'daftar_kategori'));
     }
 
     public function update(Request $request, $id) {
@@ -73,6 +76,7 @@ class NewsController extends Controller
         $new->update([
             'slug' => \Str::slug($request->title),
             'title' => $request->input('title'),
+            'category_id' => $request->input('category_id'),
             'content' => $request->input('content')
         ]);
 
